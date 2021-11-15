@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Nuovo Cliente</title>
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="login-box">
+					<div class="login-snip">
+						<h3><b>INSERISCI CLIENTE</b></h3>
+						<form method="post" action="/homepage/create"
+							th:object="${cliente}" role="form" class="form">
+							<label>Ragione Sociale: </label>&nbsp;<input
+								th:field="*{ragioneSociale}" name="ragioneSociale"
+								required="required" /><br> <label>Partita Iva: </label>&nbsp;<input
+								th:field="*{partitaIva}" name="partitaIva" required="required" /><br>
+							<label>Tipo Cliente: </label>&nbsp;<select name="tipoCliente"
+								th:field="*{tipoCliente}">
+								<option value="SRL">SRL</option>
+								<option value="SPA">SPA</option>
+								<option value="SAS">SAS</option>
+								<option value="PA">PA</option>
+							</select><br> <label>Email: </label>&nbsp;<input type="email"
+								th:field="*{email}" name="email" required="required" /><br>
+							<label>Pec: </label>&nbsp;<input type="email" th:field="*{pec}"
+								name="pec" /><br> <label>Telefono: </label>&nbsp;<input
+								type="text" th:field="*{telefono}" name="telefono" /><br>
+								
+									<br>
+								<label>ID Indirizzo Sede Operativa: </label>&nbsp;
+								<input type="number" 
+									name="operativa" />
+								<br>
+								<label>ID Indirizzo Sede Legale: </label>&nbsp;
+								<input type="number" 
+									name="legale" />
+								<br>
+							<details>
+								<summary>Contatto:</summary>
+								<label>Nome Contatto: </label>
+								<input type="text" th:field="*{nomeContatto}"
+									name="nomeContatto" />
+								<br>
+								<label>Cognome Contatto: </label>
+								<input type="text" th:field="*{cognomeContatto}"
+									name="cognomeContatto" />
+								<br>
+								<label>Telefono Contatto: </label>
+								<input type="text" th:field="*{telefonoContatto}"
+									name="telefonoContatto" />
+								<br>
+								<label>Email Contatto: </label>
+								<input type="email" th:field="*{emailContatto}"
+									name="emailContatto" />
+								<br>
+							</details>
+							<label>Data Inserimento: </label>&nbsp;<input type="date"
+								th:field="*{dataInserimento}" name="dataInserimento"
+								disabled="disabled" /> <br> <label>Data Ultimo
+								Contatto: </label>&nbsp;<input type="date"
+								th:field="*{dataUltimoContatto}" name="dataUltimoContatto" /><br>
+							<label>Fatturato Annuale: </label>&nbsp;<input type="number"
+								th:field="*{fatturatoAnnuale}" name="fatturatoAnnuale" /><br><br>
+								
+						<div class="button-add">
+							<input type="submit" value="Aggiungi Cliente" class="btn btn-success">
+						</div>
+
+						</form>
+						<br>
+						<a href="/homepage/addIndirizzo"><button class="btn btn-primary btn-custom">Aggiungi Indirizzo</button></a>
+						<a href="/homepage/mostrai"><button class="btn btn-primary btn-custom">Mostra ID indirizzi</button></a>
+						<br>
+						<br>
+						<br>
+						<br>
+						<table class="table">
+							<tr>
+								<th><a href="/homepage/clientiall"><button
+											class="btn btn-secondary">INDIETRO</button></a></th>
+								<th><a href="/homepage"><button class="btn btn-primary">HOME</button></a></th>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<style>
+.button-add{
+text-align: center;
+}
+input {
+	border-radius: 5px;
+}
+
+body {
+	margin: 0;
+	/* 	color: #6a6f8c; */
+	color: white;
+	background: #c8c8c8;
+	font: 600 16px/18px 'Open Sans', sans-serif
+}
+
+.login-box {
+	width: 100%;
+	min-height: 670px;
+	position: relative;
+	background:
+		url(https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80)
+		no-repeat center;
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0
+		rgba(0, 0, 0, .19)
+}
+
+.login-snip {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	padding: 90px 450px 90px 450px;
+	background: rgba(0, 77, 77, .9)
+}
+
+.login-snip .login, .login-snip .sign-up-form {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+	transition: all .4s linear
+}
+
+.login-snip .sign-in, .login-snip .sign-up, .login-space .group .check {
+	display: none
+}
+
+.login-snip .tab, .login-space .group .label, .login-space .group .button
+	{
+	text-transform: uppercase
+}
+
+.login-snip .tab {
+	font-size: 22px;
+	margin-right: 15px;
+	padding-bottom: 5px;
+	margin: 0 15px 10px 0;
+	display: inline-block;
+	border-bottom: 2px solid transparent
+}
+
+.login-snip .sign-in:checked+.tab, .login-snip .sign-up:checked+.tab {
+	color: #fff;
+	border-color: #1161ee
+}
+
+.login-space {
+	min-height: 345px;
+	position: relative;
+	perspective: 1000px;
+	transform-style: preserve-3d
+}
+
+.login-space .group {
+	margin-bottom: 15px
+}
+
+.login-space .group .label, .login-space .group .input, .login-space .group .button
+	{
+	width: 100%;
+	color: #fff;
+	display: block
+}
+
+.login-space .group .input, .login-space .group .button {
+	border: none;
+	padding: 15px 20px;
+	border-radius: 25px;
+	background: rgba(255, 255, 255, .1)
+}
+
+.login-space .group input[data-type="password"] {
+	text-security: circle;
+	-webkit-text-security: circle
+}
+
+.login-space .group .label {
+	color: #aaa;
+	font-size: 12px
+}
+
+.login-space .group .button {
+	background: #1161ee
+}
+
+.login-space .group label .icon {
+	width: 15px;
+	height: 15px;
+	border-radius: 2px;
+	position: relative;
+	display: inline-block;
+	background: rgba(255, 255, 255, .1)
+}
+
+.login-space .group label .icon:before, .login-space .group label .icon:after
+	{
+	content: '';
+	width: 10px;
+	height: 2px;
+	background: #fff;
+	position: absolute;
+	transition: all .2s ease-in-out 0s
+}
+
+.login-space .group label .icon:before {
+	left: 3px;
+	width: 5px;
+	bottom: 6px;
+	transform: scale(0) rotate(0)
+}
+
+.login-space .group label .icon:after {
+	top: 6px;
+	right: 0;
+	transform: scale(0) rotate(0)
+}
+
+.login-space .group .check:checked+label {
+	color: #fff
+}
+
+.login-space .group .check:checked+label .icon {
+	background: #1161ee
+}
+
+.login-space .group .check:checked+label .icon:before {
+	transform: scale(1) rotate(45deg)
+}
+
+.login-space .group .check:checked+label .icon:after {
+	transform: scale(1) rotate(-45deg)
+}
+
+.login-snip .sign-in:checked+.tab+.sign-up+.tab+.login-space .login {
+	transform: rotate(0)
+}
+
+.login-snip .sign-up:checked+.tab+.login-space .sign-up-form {
+	transform: rotate(0)
+}
+
+*, :after, :before {
+	box-sizing: border-box
+}
+
+.clearfix:after, .clearfix:before {
+	content: '';
+	display: table
+}
+
+.clearfix:after {
+	clear: both;
+	display: block
+}
+
+a {
+	color: inherit;
+	text-decoration: none
+}
+
+.hr {
+	height: 2px;
+	margin: 60px 0 50px 0;
+	background: rgba(255, 255, 255, .2)
+}
+
+.foot {
+	text-align: center
+}
+
+.row-cap-flex {
+	width: 100%;
+	height: 100%;
+}
+
+::placeholder {
+	color: #b3b3b3
+}
+</style>
+</html>

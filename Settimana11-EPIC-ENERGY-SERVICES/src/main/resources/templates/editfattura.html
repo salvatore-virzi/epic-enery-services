@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Modifica Fattura</title>
+</head>
+<body>
+	<h1 class="h1">Modifica Fattura</h1>
+	Cliente: <span th:text="${fattura.cliente.ragioneSociale}"></span><br>
+	Stato: <span th:text="${fattura.stato.nome}"></span>
+	<form method="post" action="/fattura/edit" th:object="${fattura}">
+		<input type="hidden" th:field="*{id}" th:value="${fattura.id}" /> <br>
+		<input type="hidden" th:field="*{data}" name="data"/> <br>
+		<label>Numero: </label> <input type="number" th:field="*{numero}" name="numero"/> <br>
+		<label>Anno: </label> <input type="number" th:field="*{anno}"  name="anno"/> <br>
+		<label>Importo: </label> <input type="number" th:field="*{importo}"  name="importo"/> <br>
+		<input type="submit" value="Modifica Fattura"/>	
+	</form>
+	<br><hr>
+										<table class="table"> 
+		<tr>
+			<th><a href="javascript:history.back();"><button class="bnt bnt-warning">INDIETRO</button></a></th> 
+			<th><a href="/homepage"><button class="bnt bnt-danger">HOME</button></a></th>
+		</tr>
+		</table>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Lista Fatture</title>
+</head>
+<body>
+					<h2 class="h1" ><b><i>FATTURE</i></b></h2>
+
+
+				<form action="/fattura/fatturaall" method="get">
+					<label>Ordina per: </label><select name="ordina">
+						<option value="anno">Anno</option>
+						<option value="data">Data</option>
+						<option value="importo">Importo</option>
+					</select>
+						<input type="submit" value="Ordina Lista">
+					</form>
+				<table class=table><tr>
+							<td> <i><b>Pagina: </b></i>
+								 <a th:each="i:${#numbers.sequence(0, list.totalPages-1)}"
+								th:href="@{/fattura/fatturaall?pageNumber={n}(n=${i})}"> <span th:text="${i+1}"></span>
+								|
+							</a></td>
+							<td>
+							<br><a href="/fattura/add"><button class="btn btn-primary">Nuova Fattura</button></a>
+							</td>
+							</tr></table>
+							<table class="table">
+								<tr>
+									<th><b>Numero Fattura</b></th>
+									<th><b>Ragione Sociale del cliente</b></th>
+									<th><b>Importo</b></th>
+									<th><b>Stato</b></th>
+								</tr>
+								<tr th:each="fattura:${list}">
+									<td>  
+										<span th:text="${fattura.numero}"></span></td>
+										<td><span th:text="${fattura.getCliente.getRagioneSociale}"></span></td>
+										<td><span>€</span>  <span th:text="${fattura.importo}"></span></td>
+										<td><span th:text="${fattura.getStato.getNome}"></span></td>
+										<td><a th:href="@{/fattura/view/{id}(id=${fattura.id})}"><button class="btn btn-success">Visualizza</button></a></td>
+										<td><a	th:href="@{/fattura/modifica/{id}(id=${fattura.id})}"><button class="btn btn-info">Modifica</button></a></td>
+										<td><a th:href="@{/fattura/delete/{id}(id=${fattura.id})}"><button class="btn btn-danger">Elimina</button></a></td>
+								</tr>		
+							</table>
+								<details>
+							<summary> RICERCA FATTURE</summary>
+							<form action="/fattura/ricerca" method="get"><label>Cliente: </label> <input type="text" name="cliente"/><input type="submit"value="Invia"/></form>
+							<form action="/fattura/ricerca" method="get"><label>Stato: </label> <input type="text" name="stato"/><input type="submit" value="Ricerca"/></form>
+							<form action="/fattura/ricerca" method="get"><label>Anno: </label> <input type="number" name="anno"/><input type="submit" value="Ricerca"/></form>
+							<form action="/fattura/ricerca" method="get">
+							<label>Importo minimo: </label> <input type="number" name="minimo"/>
+							<label>Importo Massimo: </label> <input type="number" name="massimo"/>
+							<input type="submit" value="Ricerca"/></form>
+							</details>
+							
+															<br><hr>
+										<table class="table"> 
+		<tr>
+			<th><a href="/homepage"><button class="bnt bnt-danger">HOME</button></a></th>
+		</tr>
+		</table>
+	
+							
+						
+</body>
+</html>

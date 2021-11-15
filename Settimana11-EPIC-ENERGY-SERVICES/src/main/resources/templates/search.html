@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Ricerca Cliente</title>
+</head>
+<body>
+	<table class=table>
+		<tr>			<td><br>
+			<a href="/homepage/add"><button class="btn btn-primary">Aggiungi
+						cliente</button></a></td>
+			</tr></table>			
+							<table class="table">
+								<tr th:each="cliente:${cliente}">
+									<td>
+										<a th:href="@{/homepage/profilo/{nome}(nome=${cliente.ragioneSociale})}">
+										<span th:text="${cliente.ragioneSociale}"></span></a></td>
+									<td>
+										<a th:href="@{/homepage/delete/{id}(id=${cliente.id})}"><button class="btn btn-danger">Elimina</button></a></td>
+									<td>
+									<a	th:href="@{/homepage/modificacliente/{id}(id=${cliente.id})}"><button class="btn btn-info">Modifica</button></a></td>
+							</tr>		
+							</table>
+							<br><hr>
+		<table class="table"> 
+		<tr>
+			<th><a href="javascript:history.back();">INDIETRO</a></th> 
+			<th><a href="/homepage">HOME</a></th>
+		</tr>
+		</table>
+						
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Dettagli Fattura</title>
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="login-box">
+					<div class="login-snip">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row margin-row">
+								<h1 class="h1">Fattura numero: </h1>&nbsp;&nbsp;&nbsp;<h1 class="h1" th:text="${fattura.numero}"></h1>
+								</div>
+								<table class="table">
+									<tr>
+										<th><b>Data</b></th>
+										<th><b>Anno</b></th>
+										<th><b>Importo</b></th>
+										<th><b>Stato</b></th>
+										<th><b>Cliente</b></th>
+										<th><b>Indirizzo Cliente</b></th>
+										<th><b>Email Cliente</b></th>
+										<th><b>Telefono Cliente</b></th>
+									</tr>
+									<tr>
+										<td><span th:text="${fattura.data}"></span></td>
+										<td><span th:text="${fattura.anno}"></span></td>
+										<td><span th:text="${fattura.importo}"></span></td>
+										<td><span th:text="${fattura.stato.getNome}"></span></td>
+										<td><span th:text="${fattura.getCliente.getRagioneSociale}"></span></td>
+										<td><span th:text="${fattura.getCliente.getIndirizzoSedeOperativa} ?: Null"></span></td>
+										<td><span th:text="${fattura.getCliente.getEmailContatto} ?: Null"></span></td>
+										<td><span th:text="${fattura.getCliente.getTelefono} ?: Null"></span></td>
+									</tr>
+								</table>
+									<br><hr>
+										<table class="table"> 
+		<tr>
+			<th><a href="javascript:history.back();"><button class="bnt bnt-warning">INDIETRO</button></a></th> 
+			<th><a href="/homepage"><button class="bnt bnt-danger">HOME</button></a></th>
+		</tr>
+		</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<style>
+.margin-row{
+margin-left: 10px !important;
+}
+</style>
+</html>
